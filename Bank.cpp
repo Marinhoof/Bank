@@ -2,6 +2,12 @@
 
 using namespace std;
 
+class User {
+    public:
+    double saldo = 5000;
+};
+
+
 void mainMenu(){
     cout << "Bem vindo ao Banco";
     cout << "\n\nSelecione a opcao desejada\n";
@@ -12,8 +18,14 @@ void mainMenu(){
 
 int main(){
 
-    int opcao, operacao, saque, deposito;
-    double saldo=5000;
+    int opcao, operacao;
+    double saque, deposito;
+
+    User obj;
+    obj.saldo;
+
+    double *ptrSaldo = &obj.saldo;
+    
     mainMenu();
     cin >> opcao;
 
@@ -26,16 +38,16 @@ int main(){
                 switch (operacao)
                 {
                 case 1: cout << "Insira o valor de saque: R$ " ; cin >> saque;
-                saldo -= saque;
-                cout << "Seu saldo atual e R$ " << saldo;
+                *ptrSaldo -= saque;
+                cout << "Seu saldo atual e R$ " << *ptrSaldo;
                 }
                 switch (operacao){
                     case 2: cout << "Insira o valor de deposito: R$ "; cin >> deposito;
-                    saldo += deposito;
-                    cout << "Seu saldo atual e R$ " << saldo;
+                    *ptrSaldo += deposito;
+                    cout << "Seu saldo atual e R$ " << *ptrSaldo;
                 }
                 switch (operacao){
-                case 3: cout << "Seu saldo e R$ "<< saldo;
+                case 3: cout << "Seu saldo e R$ "<< *ptrSaldo;
                 }
                 default:
                     break;
@@ -45,3 +57,4 @@ int main(){
     } while (operacao!=4);
     
 }
+
