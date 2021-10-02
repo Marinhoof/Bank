@@ -4,7 +4,8 @@ using namespace std;
 
 class User {
     public:
-    double saldo = 5000;
+    double saldo = 5000, saque, deposito;;
+    int opcao,operacao;
 };
 
 
@@ -18,43 +19,41 @@ void mainMenu(){
 
 int main(){
 
-    int opcao, operacao;
-    double saque, deposito;
+    User obj, obj1;
+    obj.saldo; obj1.opcao, obj1.operacao,obj1.saque, obj1.deposito ;
 
-    User obj;
-    obj.saldo;
-
-    double *ptrSaldo = &obj.saldo;
+    double *ptrSaldo = &obj.saldo, *ptrSaque = &obj1.saque, *ptrDeposito = &obj1.deposito;
+    int  *ptrOpcao = &obj1.opcao, *ptrOperacao = &obj1.operacao;
     
     mainMenu();
-    cin >> opcao;
+    cin >> *ptrOpcao;
 
     do
     {
-        switch (opcao)
+        switch (*ptrOpcao)
         {
             
-                case 1: cout << "\nQual operacao deseja realizar\n1.Saque\t\t2.Deposito\n3.Saldo\t\t4.Sair\n" << endl; cin >> operacao;
-                switch (operacao)
+                case 1: cout << "\nQual operacao deseja realizar\n1.Saque\t\t2.Deposito\n3.Saldo\t\t4.Sair\n" << endl; cin >> *ptrOperacao;
+                switch (*ptrOperacao)
                 {
-                case 1: cout << "Insira o valor de saque: R$ " ; cin >> saque;
-                *ptrSaldo -= saque;
+                case 1: cout << "Insira o valor de saque: R$ " ; cin >> *ptrSaque;
+                *ptrSaldo -= *ptrSaque;
                 cout << "Seu saldo atual e R$ " << *ptrSaldo;
                 }
-                switch (operacao){
-                    case 2: cout << "Insira o valor de deposito: R$ "; cin >> deposito;
-                    *ptrSaldo += deposito;
+                switch (*ptrOperacao){
+                    case 2: cout << "Insira o valor de deposito: R$ "; cin >> *ptrDeposito;
+                    *ptrSaldo += *ptrDeposito;
                     cout << "Seu saldo atual e R$ " << *ptrSaldo;
                 }
-                switch (operacao){
+                switch (*ptrOperacao){
                 case 3: cout << "Seu saldo e R$ "<< *ptrSaldo;
                 }
-                default:
+                default:    
                     break;
             
 
         }
-    } while (operacao!=4);
+    } while (*ptrOperacao!=4);
     
 }
 
